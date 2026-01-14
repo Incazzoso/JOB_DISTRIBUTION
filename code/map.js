@@ -22,7 +22,7 @@ let coordsRegioni = null;     // Cache delle coordinate per lo zoom
 
 // Riferimenti agli elementi HTML (DOM)
 const lavoroInput = document.getElementById('lavoro');
-const regioneInput = document.querySelector('input[name="regione"]');
+const regioneInput = document.getElementById('regione');
 const frequenzaSelect = document.getElementById('frequenza');
 
 /**
@@ -107,6 +107,9 @@ function zoomToRegione() {
 }
 
 async function updateMap() {
+        window.addEventListener('resize', () => {
+        map.invalidateSize();
+    });
     if (!geoJsonDataCache) return;
     if (geoJsonLayer) map.removeLayer(geoJsonLayer);
 
@@ -176,8 +179,8 @@ async function initialize() {
         if (resCoords.ok) coordsRegioni = await resCoords.json();
 
         // Setup Event Listeners
-        lavoroInput.addEventListener('input', updateMap); 
-        regioneInput.addEventListener('input', zoomToRegione);
+        lavoroInput.addEventListener('change', updateMap);
+        regioneInput.addEventListener('change', zoomToRegione);
         frequenzaSelect.addEventListener('change', updateMap);
 
         updateMap();
