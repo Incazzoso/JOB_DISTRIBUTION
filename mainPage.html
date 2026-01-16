@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Mappa Regioni Italiane</title>
+    <title>Lavorix</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="../style/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body class="body_1">
+
     <nav>
         <ul>
             <li><a href="#"><img src="/assets/icon home.png" alt="Icona" width="22.5" height="22.5"></a></li>
@@ -19,74 +20,88 @@
         </ul>
     </nav>
 
-    <div class="container mt-4">
-        <div class="row">
-            
-            <div class="col-md-4">
-                <div class="configuratore p-3 shadow-sm rounded bg-light">
-                    <h2 class="h4 mb-4">Filtri</h2>
-                    
-                    <div class="mb-3">
-                        <label for="lavoro" class="form-label">Seleziona Professione:</label>
-                        <select id="lavoro" class="form-select">
-                            <option value="">-- Scegli un lavoro --</option>
-                            <option value="Agricoltore">Agricoltore</option>
-                            <option value="Operaio">Operaio</option>
-                            <option value="Pilota">Pilota</option>
-                        </select>
-                    </div>
+    <div class="container">
 
-                    <div class="mb-3">
-                        <label for="regione" class="form-label">Zoom su Regione:</label>
-                        <select id="regione" name="regione" class="form-select">
-                            <option value="">Tutte le regioni</option>
-                            <option value="Abruzzo">Abruzzo</option>
-                            <option value="Basilicata">Basilicata</option>
-                            <option value="Calabria">Calabria</option>
-                            <option value="Campania">Campania</option>
-                            <option value="Emilia-Romagna">Emilia-Romagna</option>
-                            <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
-                            <option value="Lazio">Lazio</option>
-                            <option value="Liguria">Liguria</option>
-                            <option value="Lombardia">Lombardia</option>
-                            <option value="Marche">Marche</option>
-                            <option value="Molise">Molise</option>
-                            <option value="Piemonte">Piemonte</option>
-                            <option value="Puglia">Puglia</option>
-                            <option value="Sardegna">Sardegna</option>
-                            <option value="Sicilia">Sicilia</option>
-                            <option value="Toscana">Toscana</option>
-                            <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
-                            <option value="Umbria">Umbria</option>
-                            <option value="Valle d'Aosta">Valle d'Aosta</option>
-                            <option value="Veneto">Veneto</option>
-                        </select>
-                    </div>
+        <div class="filtri">
+            <h2>Filtri</h2>
+        
+            <div class="professioni">
+                <label for="lavoro" class="form-label">Seleziona Professione:</label>
+                <select id="lavoro" class="form-select">
+                    <option value="" disabled selected>Cerca una professione...</option>
+                    <option value="Agricoltore">Agricoltore</option>
+                    <option value="Operaio">Operaio</option>
+                    <option value="Pilota">Pilota</option>
+                </select>
+            </div>    
 
-                    <div class="mb-3">
-                        <label for="frequenza" class="form-label">Visualizzazione:</label>
-                        <select id="frequenza" class="form-select">
-                            <option value="Assoluta">Valori Assoluti</option>
-                            <option value="Percentuale">Percentuale sul Totale</option>
-                        </select>
-                    </div>
-                </div> </div>
-
-            <div class="col-md-8">
-                <div class="mappa">
-                    <h2 style="text-align: center;">Mappa delle Regioni</h2>
-                    <div class="div_mappa">
-                        <div id="map" style="height: 600px;"></div> </div>
-                </div>
+            <div class="regioni">
+                <label for="regione" class="form-label">Zoom su Regione:</label>
+                <select id="regione" name="regione" class="form-select">
+                    <option value="">Tutte le regioni</option>
+                    <option value="Abruzzo">Abruzzo</option>
+                    <option value="Basilicata">Basilicata</option>
+                    <option value="Calabria">Calabria</option>
+                    <option value="Campania">Campania</option>
+                    <option value="Emilia-Romagna">Emilia-Romagna</option>
+                    <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
+                    <option value="Lazio">Lazio</option>
+                    <option value="Liguria">Liguria</option>
+                    <option value="Lombardia">Lombardia</option>
+                    <option value="Marche">Marche</option>
+                    <option value="Molise">Molise</option>
+                    <option value="Piemonte">Piemonte</option>
+                    <option value="Puglia">Puglia</option>
+                    <option value="Sardegna">Sardegna</option>
+                    <option value="Sicilia">Sicilia</option>
+                    <option value="Toscana">Toscana</option>
+                    <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                    <option value="Umbria">Umbria</option>
+                    <option value="Valle d'Aosta">Valle d'Aosta</option>
+                    <option value="Veneto">Veneto</option>
+                </select>
             </div>
 
-        </div> </div> <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <div class="visualizzazioni">
+                <label for="frequenza" class="form-label">Visualizzazione:</label>
+                <select id="frequenza" class="form-select">
+                    <option value="Assoluta">Valori Assoluti</option>
+                    <option value="Percentuale">Percentuale sul Totale</option>
+                </select>
+            </div>
 
+        </div>
+
+
+            <div class="mappa" class="map-loading" style="position: relative;">
+                <h2 style="text-align: center;">Mappa delle Regioni</h2>
+                <div id="map" style="height: 600px;"></div>
+
+                <div class="custom-legend">
+                <h4>Densità Lavoratori</h4>
+                <div class="legend-item">
+                    <span class="color-box" style="background: #ebf8ff;"></span> 0 - 100
+                </div>
+                <div class="legend-item">
+                    <span class="color-box" style="background: #90cdf4;"></span> 100 - 500
+                </div>
+                <div class="legend-item">
+                    <span class="color-box" style="background: #2b6cb0;"></span> 500+
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="code/map.js" type="module"></script>
 
     <footer class="text-center mt-5 py-3 border-top">
         <p>&copy; 2026 Homepage - Tutti i diritti riservati</p>
     </footer>
+
 </body>
 </html>
