@@ -18,7 +18,7 @@
     02. BODY & BACKGROUND
     Sfondo nitido e impostazioni del carattere
    ============================================================= */
-body {
+.body_1, .body_2 {
     font-family:'Times New Roman', Times, serif;
     color: var(--text-main);
     letter-spacing: -0.01em;
@@ -42,7 +42,8 @@ nav {
     margin: 15px 20px;
     border: 1px solid rgba(255,255,255,0.1);
     transition: all 0.3s ease;
-    font-weight: 600; 
+    font-weight: 600;
+
 }
 nav .logo {
     font-size: 24px;
@@ -414,4 +415,182 @@ footer {
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 119, 182, 0.5);
+}
+
+
+/*Follow Us*/
+
+
+
+/* =============================================================
+    TITLE SECTION - GLASS REDESIGN
+   ============================================================= */
+.title {
+    background: rgba(255, 255, 255, 0.1) !important; /* Più trasparente delle icone */
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: black !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    
+    padding: 15px 40px;
+    width: fit-content; /* L'isola si stringe attorno al testo */
+    margin: 40px auto 20px auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+
+}
+
+
+
+/* =============================================================
+    GLASS DOCK - ISLAND MIX
+   ============================================================= */
+
+.dock-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;       /* Spazio nitido tra le isole */
+    margin: 60px auto;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.glass-island {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Effetto Vetro Trasparente */
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    
+    /* Stile Isola */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 22px; /* Stile iOS/Squirclre */
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Icone Social */
+.glass-island i {
+    font-size: 2.8em;
+    color: white;
+    transition: 0.3s;
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 1)) 
+            drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* =============================================================
+    EFFETTI HOVER (DINAMICI)
+   ============================================================= */
+
+.glass-island:hover {
+    transform: scale(1.2) translateY(-15px); /* Sale e si ingrandisce */
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+/* Accensione colori social al passaggio */
+#facebook:hover i { color: #1877F2; filter: drop-shadow(0 0 15px white); }
+#instagram:hover i { color: #E1306C; filter: drop-shadow(0 0 15px orange); }
+#tiktok:hover i {
+    color: #fff !important; 
+    filter: drop-shadow(-3px -2px 0px #25F4EE) 
+            drop-shadow(3px 2px 0px #FE2C55);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    animation: tiktok-glitch 0.2s ease-in-out 1 forwards;
+}
+#tiktok:hover {
+    box-shadow: 0 15px 35px rgba(254, 44, 85, 0.3);
+}
+#twitter:hover i { color: black; filter: drop-shadow(0 0 15px #1DA1F2); }
+#github:hover i { color: black; filter: drop-shadow(0 0 15px purple); }
+#youtube:hover i { color: #FF0000; filter: drop-shadow(0 0 15px white); }
+
+
+
+/* =============================================================
+    ADATTAMENTO SCREEN
+   ============================================================= */
+
+/* Schermi Grandi: Tutti in riga (se hai 6 icone, allarga la max-width) */
+@media (min-width: 1024px) {
+    .dock-wrapper {
+        max-width: 800px; 
+    }
+}
+
+/* Tablet/Mobile: Forza la griglia a coppie o gruppi di 4 */
+@media (max-width: 768px) {
+    .dock-wrapper {
+        max-width: 460px; /* Qui si incastrano a gruppi di 4 o 2 a seconda del gap */
+        gap: 20px;
+    }
+    
+    .glass-island {
+        width: 80px;  /* Leggermente più piccole su mobile per stare comode */
+        height: 80px;
+    }
+    
+    .glass-island i {
+        font-size: 2.2em;
+    }
+}
+@keyframes tiktok-glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    60% { transform: translate(-1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0); } /* Torna a zero spaccato */
+}
+
+
+/* =============================================================
+    CONTACT SECTION - GLASS PILL
+   ============================================================= */
+.contact {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(15px) saturate(180%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px; /* Effetto pillola */
+    
+    width: 60%;
+    max-width: 400px;
+    padding: 15px 30px;
+    margin: 50px auto;
+    
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.contact:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contact a {
+    color: white !important;
+    font-size: 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
