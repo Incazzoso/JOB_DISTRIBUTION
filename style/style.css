@@ -11,6 +11,11 @@
     --glass-border: rgba(255, 255, 255, 0.4);
     --primary-color: #0077b6;
     --text-main: #1d1d1f;
+    --bg-color: #fff;
+    [data-theme="dark"] {
+        --text-color: #fff;
+        --bg-color: #000;
+    }
 }
 
 
@@ -19,14 +24,51 @@
    ============================================================= */
 .body_1, .body_2 {
     font-family: 'Times New Roman', Times, serif;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-                url('https://picsum.photos/3840/2160') no-repeat center center fixed;
+    
     background-size: cover;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    color: var(--text-color);
+}
+/* SFONDO */
+
+#bg-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -999; /* Dietro a tutto */
+    background-color: #000; /* Nero solo mentre carica */
 }
 
+.bg-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(0.7);
+    /* Transizione rapida: 0.4 secondi è il "sweet spot" */
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    #bg-photo {
+    /* ... i tuoi stili ... */
+    image-rendering: -webkit-optimize-contrast; /* Per Chrome e Safari */
+    image-rendering: high-quality;
+    transform: translateZ(0); /* Attiva la scheda video per il rendering */
+}
+}
+
+/* Classi per il tema (senza toccare i font) */
+[data-theme="light"] {
+    --bg-card: rgba(255, 255, 255, 0.2);
+    --testo: #000;
+}
+
+[data-theme="dark"] {
+    --bg-card: rgba(0, 0, 0, 0.4);
+    --testo: #fff;
+}
 
 /* =============================================================
     03. NAVBAR
