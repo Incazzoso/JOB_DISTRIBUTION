@@ -2,128 +2,100 @@
     01. GLOBAL SETUP
    ============================================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;                                      /* Mi serve per azzerare i margini di base del browser */
+    padding: 0;                                     /* Mi serve per azzerare i rientri di base del browser */
+    box-sizing: border-box;                         /* Mi serve per includere bordi e padding nel calcolo della larghezza */
 }
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.75);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --primary-color: #0077b6;
-    --text-main: #1d1d1f;
-    --bg-color: #fff;
-    [data-theme="dark"] {
-        --text-color: #fff;
-        --bg-color: #000;
-    }
+    --glass-bg: rgba(255, 255, 255, 0.75);          /* Mi serve per definire il colore del vetro trasparente */
+    --glass-border: rgba(255, 255, 255, 0.4);       /* Mi serve per il colore dei bordi effetto cristallo */
+    --primary-color: steelblue;                     /* CAMBIATO: Mi serve per avere un blu di riferimento (ex #0077b6) */
+    --text-main: black;                             /* CAMBIATO: Mi serve per il colore del testo principale (ex #1d1d1f) */
+    --bg-color: white;                              /* CAMBIATO: Mi serve per definire il colore di sfondo della pagina (ex #fff) */
+    
 }
-
-
 /* =============================================================
     02. BODY & BACKGROUND
    ============================================================= */
 .body_1, .body_2 {
-    font-family: 'Times New Roman', Times, serif;
-    
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    color: var(--text-color);
+    font-family: 'Times New Roman', Times, serif;   /* Mi serve per dare un tono classico e poetico al sito */
+    background-color: var(--bg-color);              /* Mi serve per applicare lo sfondo definito nelle variabili */
+    background-size: cover;                         /* Mi serve per far sì che lo sfondo copra tutta la finestra */
+    min-height: 100vh;                              /* Mi serve per assicurarmi che il body sia alto almeno quanto lo schermo */
+    display: flex;                                  /* Mi serve per usare il sistema Flexbox per il layout */
+    flex-direction: column;                         /* Mi serve per impilare gli elementi in verticale */
+    color: var(--text-main);                        /* Mi serve per applicare il colore del testo principale */
 }
-/* SFONDO */
 
 #bg-image-container {
-    position: fixed;
+    position: fixed;                                /* Mi serve per bloccare lo sfondo mentre l'utente scorre */
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: -999; /* Dietro a tutto */
-    background-color: #000; /* Nero solo mentre carica */
+    z-index: -999;                                  /* Mi serve per spingere lo sfondo dietro a tutto il resto */
+    background-color: black;                        /* CAMBIATO: Mi serve come colore di riserva (ex #000) */
 }
 
 .bg-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%) brightness(0.7);
-    /* Transizione rapida: 0.4 secondi è il "sweet spot" */
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    #bg-photo {
-    /* ... i tuoi stili ... */
-    image-rendering: -webkit-optimize-contrast; /* Per Chrome e Safari */
-    image-rendering: high-quality;
-    transform: translateZ(0); /* Attiva la scheda video per il rendering */
-}
+    object-fit: cover;                              /* Mi serve per adattare la foto senza distorcerla */
+    filter: grayscale(100%) brightness(0.7);        /* Mi serve per l'effetto bianco e nero lirico e scettico */
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Mi serve per far apparire la foto in modo fluido */
+    opacity: 0;                                     /* Mi serve per farla partire invisibile e fare l'effetto fade-in */
+    image-rendering: -webkit-optimize-contrast;     /* Mi serve per migliorare la nitidezza su Safari */
+    image-rendering: high-quality;                  /* Mi serve per forzare il browser a renderizzare al meglio l'immagine */
+    transform: translateZ(0);                       /* Mi serve per attivare l'accelerazione hardware della scheda video */
 }
 
 /* Classi per il tema (senza toccare i font) */
 [data-theme="light"] {
-    --bg-card: rgba(255, 255, 255, 0.2);
-    --testo: #000;
+    --bg-color: white;                              /* Mi serve per impostare il bianco nel tema chiaro */
+    --text-main: black;                             /* Mi serve per avere il testo nero nel tema chiaro */
+    --bg-card: rgba(255, 255, 255, 0.2);            /* Mi serve per lo sfondo delle card nel tema chiaro */
+    --testo: black;                                 /* CAMBIATO: Mi serve come variabile di backup (ex #000) */
 }
 
 [data-theme="dark"] {
-    --bg-card: rgba(0, 0, 0, 0.4);
-    --testo: #fff;
+    --bg-color: black;                              /* Mi serve per impostare il nero nel tema scuro */
+    --text-main: white;                             /* Mi serve per avere il testo bianco nel tema scuro */
+    --bg-card: rgba(0, 0, 0, 0.4);                  /* Mi serve per lo sfondo delle card nel tema scuro */
+    --testo: white;                                 /* CAMBIATO: Mi serve come variabile di backup (ex #fff) */
 }
+
 
 /* =============================================================
     03. NAVBAR
    ============================================================= */
 nav {
-    overflow: hidden;
-    border-radius: 20px;
-    margin: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    margin: 15px 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: 600;
-    padding: 5px;
+    border-radius: 20px;                                        /* Mi serve per arrotondare gli angoli della barra di navigazione */
+    background: rgba(0, 0, 0, 0.8);                           /* Mi serve per dare uno sfondo scuro e semitrasparente */
+    -webkit-backdrop-filter: blur(15px);                        /* Mi serve per l'effetto sfocato su dispositivi Apple */
+    backdrop-filter: blur(15px);                                /* Mi serve per l'effetto sfocato standard (Chrome/Edge) */
+    margin: 10px;                                               /* Mi serve per staccare la navbar dai bordi */
+    border: 1px solid rgba(255,255,255,0.1);                  /* Mi serve per creare un bordo sottile che dia profondità */
+    transition: background-color 0.3s ease, color 0.3s ease;    /* Mi serve per rendere i cambi di colore fluidi */
+    font-weight: 600;                                           /* Mi serve per rendere il testo della nav leggermente più grassetto */
+    padding: 5px;                                               /* Mi serve per dare respiro interno alla navbar */
 }
 
 nav .logo {
-    font-size: 24px;
-    color: white;
-    padding-left: 10px;
-    letter-spacing: -1px;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-size: 24px;                                /* Mi serve per impostare la grandezza del logo */
+    color: white;                                 /* Mi serve per far risaltare il logo sul fondo scuro */
+    padding-left: 10px;                             /* Mi serve per distanziarlo dal bordo sinistro */
+    letter-spacing: -1px;                           /* Mi serve per un look moderno con lettere più vicine */
+    font-weight: 600;                               /* Mi serve per dare importanza visiva al logo */
+    text-transform: uppercase;                      /* Mi serve per scrivere il logo tutto in maiuscolo */
 }
 
 nav ul {
-    list-style-type: none;
+    list-style-type: none;                          /* Mi serve per togliere i punti elenco della lista */
     margin: 0;
     padding: 0 2px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-nav li a {
-    text-align: center;
-    margin: 5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 16px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-nav li:first-child a {
-    border-radius: 16px !important;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: flex;                                  /* Mi serve per disporre i link in orizzontale */
+    align-items: center;                            /* Mi serve per centrare i link verticalmente */
+    justify-content: space-between;                 /* Mi serve per distribuire spazio tra gli elementi */
 }
 
 nav a {
@@ -131,50 +103,49 @@ nav a {
     align-items: center;
     justify-content: center;
     color: white;
-    text-align: center;
+    margin: 0 5px; /* Margine laterale leggero */
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 16px;
     font-weight: bold;
-    position:relative;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    transition: all 0.3s ease;
 }
 
 nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
+    content: '';                                    /* Mi serve per creare l'elemento grafico della linea sotto */
+    position: absolute;                             /* Mi serve per posizionarlo rispetto al link */
+    width: 0;                                       /* Mi serve per farlo partire da larghezza zero */
     height: 2px;
     bottom: 5px;
     left: 50%;
-    background-color: white;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
+    background-color: white;                      /* Mi serve per dare il colore alla linea */
+    transition: all 0.3s ease;                      /* Mi serve per animare la comparsa della linea */
+    transform: translateX(-50%);                    /* Mi serve per centrare la linea perfettamente */
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);   /* Mi serve per evidenziare il link quando ci passi sopra */
     border-radius: 16px;
     color: white;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav a:hover::after {
-    width: 70%;
+    width: 70%;                                     /* Mi serve per far allungare la linea al passaggio del mouse */
     border-radius: 16px;
 }
 
 nav a img {
     display: block;
     margin: 0 auto;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease;                /* Mi serve per animare le icone dei link */
 }
 
 nav a:hover img {
-    transform: scale(1.1); /* Micro-interazione: la casetta si ingrandisce leggermente */
+    transform: scale(1.1);                          /* Mi serve per l'ingrandimento dell'icona (micro-interazione) */
 }
 .spacer {
-    flex: 2;
+    flex: 2;                                        /* Mi serve per creare lo spazio vuoto tra logo e link */
 }
 
 
@@ -184,38 +155,36 @@ nav a:hover img {
     04. CONTAINER & CONFIGURATORE STYLES
    ============================================================= */
 h2 {
+    font-family: 'Times New Roman', Times, serif;
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
     margin-bottom: 25px;
-    color: #000;
+    color: var(--text-main);
+    text-transform: uppercase;
 }
 
 .container {
     display: flex;
     justify-content: center;
-    border-radius: 20px;
-    overflow: hidden;
+    align-items: flex-start; /* Fondamentale per non allungare i filtri inutilmente */
     flex-direction: row;
-    width: 98%;
-    max-width: 1920px;
-    margin: 20px auto;
-    gap: 20px;
-    padding: 20px;
-    background: transparent !important;
-    border: none !important;
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
+    width: 95%; /* Leggermente più stretto per dare respiro ai bordi */
+    max-width: 1600px; /* Più equilibrato del 1920px per la leggibilità */
+    margin: 40px auto; 
+    gap: 30px; /* Aumentato il gap per un look più moderno */
+    padding: 0; /* Il padding lo gestiamo nei figli per il glassmorphism */
 }
 
 .configuratore {
-    flex: 1;
+    flex: 1;                                        /* Mi serve per far occupare allo spazio del configuratore la sua quota */
     padding: 20px;
 }
 
 .professioni,
 .regioni,
 .visualizzazioni {
-    margin-bottom: 25px;
+    margin-bottom: 25px;                            /* Mi serve per distanziare i vari menu di selezione */
     position: relative;
 }
 
@@ -223,7 +192,7 @@ h2 {
     04. LABEL & SELECT STYLES
    ============================================================= */
 .form-label {
-    display: none; /* Sparito, ma tecnicamente presente */
+    display: none;                                  /* Mi serve per nascondere le etichette per un design più pulito */
     font-weight: 700;
     text-transform: uppercase;
     color: black;
@@ -232,61 +201,57 @@ h2 {
     font-size: 0.75rem;
 }
 
-select.form-select {
+/* Sostituisci i blocchi select esistenti con questo */
+select {
     width: 100%;
     padding: 12px;
+    margin-bottom: 15px;
     border-radius: 20px;
     border: 2px solid black;
     background-color: white;
-    cursor: pointer;
+    color: black;
     font-size: 0.95rem;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-}
-
-select{
-    border-radius: 20px;
-    border: 2px solid black;
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
+    font-family: inherit; 
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 0.95rem;
-    color: black;
-}
-
-select.form-select:hover {
-    background-color: #fff;
-    border-color :black ;
+    appearance: none; 
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
 }
 
 select:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    border-color: black; /* Forza il bordo nero anche in hover */
 }
 
 select:focus {
     transform: scale(1.02);
-    outline: none !important;
-    border-color: black; /* Torna al tuo bordo nero originale */
+    outline: none;
+    border-color: black;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1); /* Un leggero alone invece del bordo blu */
 }
 
 /* =============================================================
     05. DIV FIGLI (FILTRI & MAPPA)
    ============================================================= */
 .filtri {
-    flex: 0 0 350px;
+    flex: 0 0 350px;                                /* Mi serve per dare una larghezza fissa di 350px ai filtri */
     padding: 20px;
-    height: fit-content;
+    height: fit-content;                            /* Mi serve per far adattare l'altezza al contenuto */
     border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);        /* Mi serve per una leggera ombra di base */
     border: 1px solid rgba(255, 255, 255, 0.4);
-    z-index: 100;
+    z-index: 100;                                   /* Mi serve per far stare i filtri sopra altri elementi */
+}
+.filtri h2 {
+    text-align: center;
 }
 
 .mappa {
-    flex: 1;
+    flex: 1;                                        /* Mi serve per far sì che la mappa occupi tutto lo spazio rimanente */
     padding: 20px;
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -297,11 +262,11 @@ select:focus {
 }
 
 .filtri, .mappa{
-    background: rgba(255, 255, 255, 0.2); /* Leggermente trasparente */
-    -webkit-backdrop-filter: blur(15px) saturate(180%); /* Per Safari */
-    backdrop-filter: blur(10px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.2);                 /* Mi serve per l'effetto vetro traslucido */
+    -webkit-backdrop-filter: blur(15px) saturate(180%);     /* Mi serve per l'effetto vetro su Safari */
+    backdrop-filter: blur(10px) saturate(180%);             /* Mi serve per la sfocatura dello sfondo e colori vividi */
+    border: 1px solid rgba(255, 255, 255, 0.4);           /* Mi serve per il riflesso sul bordo del vetro */
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);           /* Mi serve per far risaltare i blocchi dallo sfondo */
     border-radius: 20px;
 }
 
@@ -309,61 +274,60 @@ select:focus {
     06. MAPPA & ELEMENTI INTERNI
    ============================================================= */
 #map {
-    height: 750px;
     width: 100%;
-    border-radius: 20px;
-    border: 2px solid black;
-    height: 80vh;
-    min-height: 500px;
+    border-radius: 20px;                            /* Mi serve per smussare gli angoli del contenitore mappa */
+    border: 2px solid black;                      /* Mi serve per incorniciare la mappa in modo deciso */
+    height: 80vh;                                   /* Mi serve per dare un'altezza proporzionale allo schermo */
+    min-height: 500px;                              /* Mi serve per non far collassare la mappa su schermi bassi */
 }
 .map-loading {
-    opacity: 0.6;
-    pointer-events: none; /* Impedisce click accidentali mentre carica */
-    filter: grayscale(0.5);
+    opacity: 0.6;                                   /* Mi serve per far capire che la mappa sta caricando */
+    pointer-events: none;                           /* Mi serve per evitare interazioni durante il caricamento */
+    filter: grayscale(0.5);                         /* Mi serve per togliere colore durante il caricamento */
     transition: all 0.5s ease;
 }
 .leaflet-interactive {
-    transition: filter 0.3s ease, stroke-width 0.3s ease;
+    transition: filter 0.3s ease, stroke-width 0.3s ease; /* Mi serve per animare le regioni della mappa al passaggio del mouse */
 }
 .leaflet-interactive:hover {
-    filter: brightness(1.2) drop-shadow(0 0 5px rgba(0,0,0,0.5));
-    stroke-width: 4px;
+    filter: brightness(1.2) drop-shadow(0 0 5px rgba(0,0,0,0.5));     /* Mi serve per illuminare la regione selezionata */
+    stroke-width: 4px;                                                  /* Mi serve per ispessire il bordo della regione su cui si trova il mouse */
 }
 
 .custom-legend {
-    position: absolute;
-    bottom: 30px;
+    position: absolute;                             /* Mi serve per sovrapporre la legenda alla mappa */
+    bottom: 30px;                                   /* Mi serve per posizionarla in basso a destra */
     right: 30px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9);         /* Mi serve per rendere la legenda ben leggibile */
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     padding: 15px;
     border-radius: 12px;
     border: 1px solid rgba(0,0,0,0.1);
-    z-index: 1000; /* Deve stare sopra la mappa */
+    z-index: 1000;                                  /* Mi serve per far stare la legenda sopra i layer della mappa */
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
 }
 
 .custom-legend h4 {
     font-size: 0.75rem;
-    text-transform: uppercase;
+    text-transform: uppercase;                      /* Mi serve per un titolo legenda piccolo ma autoritario */
     margin-bottom: 10px;
-    color: #444;
+    color: dimgray;                               /* CAMBIATO: (ex #444) */
 }
 
 .legend-item {
-    display: flex;
+    display: flex;                                  /* Mi serve per allineare il quadratino colore al testo */
     align-items: center;
     font-size: 0.85rem;
     margin-bottom: 5px;
-    color: #333;
+    color: darkslategray;                         /* CAMBIATO: (ex #333) */
 }
 
 .color-box {
     width: 16px;
     height: 16px;
     margin-right: 10px;
-    border-radius: 4px;
+    border-radius: 4px;                             /* Mi serve per il quadratino della legenda */
 }
 
 
@@ -373,19 +337,19 @@ select:focus {
     TITLE SECTION - GLASS REDESIGN
    ============================================================= */
 .title {
-    background: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.2) !important;    /* Mi serve per mantenere lo stile vetro anche per il titolo social */
     -webkit-backdrop-filter: blur(10px) saturate(150%);
     backdrop-filter: blur(10px) saturate(150%);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: black !important;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    text-transform: uppercase;                      /* Mi serve per dare un look da testata giornalistica o istituzionale */
+    letter-spacing: 3px;                            /* Mi serve per dare respiro al titolo (stile futurista/moderno) */
     font-weight: 600;
     padding: 40px 20px 20px 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     border-radius: 20px;   
     text-align: center;
-    margin: 15px auto;
+    margin: 15px auto;                              /* Mi serve per centrare il titolo nella pagina */
 }
 
 /* =============================================================
@@ -393,11 +357,11 @@ select:focus {
    ============================================================= */
 
 .dock-wrapper {
-    display: flex;
-    justify-content: center;
+    display: flex;                                  /* Mi serve per allineare le icone social */
+    justify-content: center;                        /* Mi serve per centrare le icone */
     align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-wrap: wrap;                                /* Mi serve per far andare a capo le icone se non c'è spazio */
+    gap: 20px;                                      /* Mi serve per distanziare le icone tra loro */
     margin: 60px auto;
     padding: 20px;
     max-width: 800px;
@@ -414,18 +378,18 @@ select:focus {
     background: rgba(255, 255, 255, 0.2);
     -webkit-backdrop-filter: blur(12px) saturate(160%);
     backdrop-filter: blur(12px) saturate(160%);
-    border-radius: 20px;
+    border-radius: 20px;                            /* Mi serve per dare la forma a "isola" stile iOS */
     border: 1px solid rgba(255, 255, 255, 0.2);
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Mi serve per un'animazione di entrata/uscita elegante */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .glass-island i {
-    font-size: 2.8em;
+    font-size: 2.8em;                               /* Mi serve per dare risalto alle icone social */
     color: white;
     transition: 0.3s;
-    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 1)) 
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 1)) /* Mi serve per dare un contorno alle icone e farle leggere bene */
             drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
 }
 
@@ -434,29 +398,29 @@ select:focus {
     EFFETTI HOVER (ZOOM + COLORI)
    ============================================================= */
 .glass-island:hover {
-    transform: scale(1.2) translateY(-15px); /* Sale e si ingrandisce */
+    transform: scale(1.2) translateY(-15px);        /* Mi serve per l'effetto "pop" che alza l'icona quando ci passi sopra */
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);   /* Mi serve per aumentare l'ombra mentre l'icona "vola" */
+    z-index: 10;                                    /* Mi serve per far stare l'icona hover sopra le altre */
 }
 
 
-#facebook:hover i { color: #1877F2; filter: drop-shadow(0 0 15px white); }
-#instagram:hover i { color: #E1306C; filter: drop-shadow(0 0 15px orange); }
+#facebook:hover i { color: royalblue; filter: drop-shadow(0 0 15px white); } /* CAMBIATO: (ex #1877F2) */
+#instagram:hover i { color: mediumvioletred; filter: drop-shadow(0 0 15px orange); } /* CAMBIATO: (ex #E1306C) */
 #tiktok:hover i {
-    color: #fff !important; 
-    filter: drop-shadow(-3px -2px 0px #25F4EE) 
-            drop-shadow(3px 2px 0px #FE2C55);
+    color: white !important;                        /* CAMBIATO: (ex #fff) */
+    filter: drop-shadow(-3px -2px 0px cyan)         /* CAMBIATO: (ex #25F4EE) */
+            drop-shadow(3px 2px 0px crimson);       /* CAMBIATO: (ex #FE2C55) */
     transform: scale(1.1);
-    animation: tiktok-glitch 0.2s ease-in-out 2 forwards;
+    animation: tiktok-glitch 0.2s ease-in-out 2 forwards; /* Mi serve per attivare l'animazione glitch */
 }
 #tiktok:hover {
     box-shadow: 0 15px 35px rgba(254, 44, 85, 0.3);
 }
-#twitter:hover i { color: black; filter: drop-shadow(0 0 15px #1DA1F2); }
+#twitter:hover i { color: black; filter: drop-shadow(0 0 15px skyblue); } /* CAMBIATO: (ex #1DA1F2) */
 #github:hover i { color: black; filter: drop-shadow(0 0 15px purple); }
-#youtube:hover i { color: #FF0000; filter: drop-shadow(0 0 15px white); }
+#youtube:hover i { color: red; filter: drop-shadow(0 0 15px white); } /* CAMBIATO: (ex #FF0000) */
 
 
 /* =============================================================
@@ -467,29 +431,33 @@ select:focus {
     -webkit-backdrop-filter: blur(15px) saturate(180%);
     backdrop-filter: blur(15px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px; /* Effetto pillola */
+    border-radius: 20px;                            /* Mi serve per creare un pulsante stile pillola moderna */
     width: 60%;
     max-width: 400px;
     padding: 15px 30px;
     margin: 50px auto;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;                      /* Mi serve per una transizione fluida del tasto contatti */
     cursor: pointer;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .contact:hover {
     background: rgba(255, 255, 255, 0.25) !important;
-    transform: translateY(-5px);
+    transform: translateY(-5px);                    /* Mi serve per dare un feedback fisico all'utente */
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .contact a {
-    color: white !important;
+    color: white !important;                      /* Mi serve per far leggere il link contatti sullo sfondo scuro/vetro */
     font-size: 18px;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px;                                      /* Mi serve per distanziare icona e testo nel tasto contatti */
+}
+
+.contact h2 {
+    text-align: center;
 }
 
 
@@ -497,8 +465,8 @@ select:focus {
     6. STATS GRID
    ============================================================= */
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: grid;                                                   /* Mi serve per creare una griglia automatica per le statistiche */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));     /* Mi serve per rendere la griglia responsiva senza media queries */
     gap: 25px;
     max-width: 1200px;
     margin: 60px auto;
@@ -506,24 +474,20 @@ select:focus {
 }
 
 .stat-card {
-    /* Usiamo la tua variabile glass-bg o il mix scuro della nav */
     background: rgba(255, 255, 255, 0.15) !important; 
     -webkit-backdrop-filter: blur(15px) saturate(180%);
     backdrop-filter: blur(15px) saturate(180%);
-    
-    /* Bordino sottile e pulito come la mappa */
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px; /* Coerenza col raggio della navbar */
+    border-radius: 20px;
     padding: 40px 25px;
     text-align: center;
-    color: black; /* Testo nero come nel tuo .title e .mappa */
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    color: black;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);        /* Mi serve per un movimento delle card fluido e premium */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
-/* Effetto Hover - Stesso stile delle icone social */
 .stat-card:hover {
-    transform: translateY(-10px) scale(1.03);
+    transform: translateY(-10px) scale(1.03);                       /* Mi serve per evidenziare la card che l'utente sta leggendo */
     background: rgba(255, 255, 255, 0.25) !important;
     border-color: rgba(255, 255, 255, 0.5);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
@@ -532,13 +496,12 @@ select:focus {
 .stat-icon {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #000; /* Icone nere per massima leggibilità sul vetro chiaro */
-    /* Riflesso morbido sotto l'icona */
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    color: black;                                                 /* CAMBIATO: (ex #000) */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));            /* Mi serve per dare un minimo di tridimensionalità all'icona */
 }
 
 .stat-card h3 {
-    font-family: 'Times New Roman', Times, serif; /* Coerenza col tuo body */
+    font-family: 'Times New Roman', Times, serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -548,9 +511,9 @@ select:focus {
 
 .stat-card p {
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.6;                               /* Mi serve per rendere i paragrafi delle stats più leggibili */
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.8);                    /* Mi serve per un nero meno aggressivo (grigio molto scuro) */
 }
 
 
@@ -558,7 +521,7 @@ select:focus {
     07. GLOBAL FOOTER
    ============================================================= */
 footer {
-    text-align: center;
+    text-align: center;                             /* Mi serve per centrare i copyright nel footer */
     padding: 40px 20px;
     font-size: 0.9rem;
     background: rgba(0, 0, 0, 0.8) !important; 
@@ -566,10 +529,10 @@ footer {
     backdrop-filter: blur(12px);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.8);
-    border-radius: 20px 20px 0 0; 
+    border-radius: 20px 20px 0 0;                   /* Mi serve per arrotondare solo gli angoli superiori del footer */
     margin: 50px 0 0 0; 
     width: 100%;
-    margin-top: auto;
+    margin-top: auto;                               /* Mi serve per spingere il footer in fondo se la pagina è vuota */
 }
 
 /* =============================================================
@@ -577,48 +540,33 @@ footer {
    ============================================================= */
 @media (max-width: 1024px) {
     .container {
+        flex-direction: column;                     /* Mi serve per mettere filtri e mappa uno sopra l'altro sui tablet */
         width: 100%;
         margin: 0;
-        border-radius: 0; /* Full screen su mobile è più pulito */
-        flex-direction: column; 
         padding: 10px;
+        border-radius: 0;
     }
 
-    /* I filtri diventano a larghezza piena e meno ingombranti */
-    .filtri {
-        flex: none;
-        width: 100%;
+    .filtri, .mappa {
+        flex: none;                                 /* Mi serve per annullare la flessibilità della riga */
+        width: 100%;                                /* Mi serve per far occupare tutta la larghezza ai blocchi */
         margin: 0 0 15px 0;
-        padding: 20px;
-    }
-
-    /* La mappa deve restare visibile senza scrollare troppo */
-    .mappa {
-        flex: none;
-        width: 100%;
-        margin: 0;
-        padding: 10px;
     }
 
     #map {
-        height: 50vh; /* Metà altezza schermo così l'utente vede che c'è qualcosa sotto */
+        height: 50vh;                               /* Mi serve per ridurre l'altezza della mappa sui dispositivi verticali */
         min-height: 350px;
     }
 
     .title {
-        margin: 40px 20px 20px 20px; /* Margini leggermente ridotti come la nav mobile */
+        margin: 40px 20px 20px 20px;                /* Mi serve per adattare i margini del titolo sui tablet */
         padding: 15px 20px;
         font-size: 1rem;
         letter-spacing: 1.5px;
     }
 
-    .dock-wrapper {
-        max-width: 800px; 
-    }
-
-    /* Navbar mobile: i link devono essere facili da toccare col pollice */
     nav ul {
-        flex-wrap: wrap;
+        flex-wrap: wrap;                            /* Mi serve per far andare a capo i link della nav se non ci stanno */
         justify-content: center;
         gap: 10px;
     }
@@ -629,54 +577,36 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
-    select {
-        height: 50px; /* Più facile da cliccare con le dita */
-        font-size: 16px; /* Evita lo zoom automatico di iOS sui campi input */
-    }
-    
-    h2 {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-
-    .title {
-        margin: 40px 20px 20px 20px; /* Margini leggermente ridotti come la nav mobile */
-        padding: 15px 20px;
-        font-size: 1rem;
-        letter-spacing: 1.5px;
-    }
-}
-
-/* Responsive */
 @media (max-width: 768px) {
     .stats-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;                 /* Mi serve per mettere le stats una sotto l'altra sui telefoni */
         margin: 30px auto;
-        padding: 0 15px;
-    }
-
-    .title {
-        margin: 40px 20px 20px 20px; /* Margini leggermente ridotti come la nav mobile */
-        padding: 15px 20px;
-        font-size: 1rem;
-        letter-spacing: 1.5px;
-        min-width: 180px;
     }
     
     .dock-wrapper {
-        max-width: 460px; /* Qui si incastrano a gruppi di 4 o 2 a seconda del gap */
+        max-width: 460px;                           /* Mi serve per stringere il contenitore social sui telefoni */
         gap: 20px;
-        flex-wrap: wrap;
     }
 
     .glass-island {
-        width: 80px;  /* Leggermente più piccole su mobile per stare comode */
+        width: 80px;                                /* Mi serve per rimpicciolire le icone social su schermi piccoli */
         height: 80px;
     }
     
     .glass-island i {
-        font-size: 2.2em;
+        font-size: 2.2em;                           /* Mi serve per rimpicciolire l'icona interna al tasto */
+    }
+}
+
+@media (max-width: 600px) {
+    select {
+        height: 50px;                               /* Mi serve per rendere i menu di selezione più facili da toccare col pollice */
+        font-size: 16px;                            /* Mi serve per evitare lo zoom forzato di Safari su iPhone */
+    }
+    
+    h2 {
+        font-size: 1.2rem;                          /* Mi serve per adattare la grandezza dei sottotitoli */
+        text-align: center;
     }
 }
 
@@ -686,43 +616,43 @@ footer {
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(20px);                /* Mi serve per far partire l'elemento dal basso e invisibile */
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0);                   /* Mi serve per far arrivare l'elemento alla posizione finale */
     }
 }
 
 .filtri, .mappa {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.6s ease-out forwards;     /* Mi serve per attivare l'animazione di entrata "da sotto" */
 }
 
 .mappa {
-    animation-delay: 0.2s;
+    animation-delay: 0.2s;                          /* Mi serve per far apparire la mappa leggermente dopo i filtri */
 }
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 8px;                                     /* Mi serve per definire la larghezza della barra di scorrimento */
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
+    background: white;             /* Mi serve per il colore di sfondo del binario della scrollbar */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 119, 182, 0.3); /* Colore primario trasparente */
+    background: black;             /* Mi serve per dare il colore blu trasparente alla maniglia dello scroll */
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 119, 182, 0.5);
+    background: grey;             /* Mi serve per scurire la scrollbar quando l'utente ci passa sopra */
 }
 
 @keyframes tiktok-glitch {
     0% { transform: translate(0); }
-    20% { transform: translate(-2px, 1px); }
-    40% { transform: translate(2px, -1px); }
+    20% { transform: translate(-2px, 1px); }        /* Mi serve per il primo scatto del glitch */
+    40% { transform: translate(2px, -1px); }        /* Mi serve per il secondo scatto del glitch */
     60% { transform: translate(-1px, 1px); }
     80% { transform: translate(1px, -1px); }
-  100% { transform: translate(0); } /* Torna a zero spaccato */
+  100% { transform: translate(0); }                 /* Mi serve per far tornare l'icona ferma alla fine */
 }
