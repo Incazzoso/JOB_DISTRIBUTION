@@ -18,13 +18,19 @@
     02. BODY & BACKGROUND
    ============================================================= */
 .body_1, .body_2 {
-    font-family: 'Times New Roman', Times, serif;   /* Mi serve per dare un tono classico e poetico al sito */
     background-color: var(--bg-color);              /* Mi serve per applicare lo sfondo definito nelle variabili */
     background-size: cover;                         /* Mi serve per far sì che lo sfondo copra tutta la finestra */
     min-height: 100vh;                              /* Mi serve per assicurarmi che il body sia alto almeno quanto lo schermo */
     display: flex;                                  /* Mi serve per usare il sistema Flexbox per il layout */
     flex-direction: column;                         /* Mi serve per impilare gli elementi in verticale */
     color: var(--text-main);                        /* Mi serve per applicare il colore del testo principale */
+}
+
+.quicksand {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #bg-image-container {
@@ -148,6 +154,14 @@ nav a:hover img {
     flex: 2;                                        /* Mi serve per creare lo spazio vuoto tra logo e link */
 }
 
+.fredoka {
+  font-family: "Times New Roman", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
 
 /* Main-Page*/
 
